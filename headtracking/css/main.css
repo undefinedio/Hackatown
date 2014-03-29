@@ -2,6 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
+body{
+	overflow: hidden;
+}
 #inputVideo
 {
 	transform: rotateY(180deg);
@@ -38,7 +41,6 @@
 	top:50%;
 	margin-top: -1500px;
 	margin-left: -1500px;
-	-webkit-transform: rotate(90deg);
 	z-index: -1;
 }
 .map-wrapper{
