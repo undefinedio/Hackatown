@@ -18,7 +18,7 @@ Rocket.prototype.init = function(){
 		// width, height & registration point of each sprite
 		frames: {width: 59, height: 500},
 		animations: {
-			walk: [0, 5, "rotate"]
+			walk: [0, 9, "rotate"]
 		}
 	});
 
@@ -41,7 +41,9 @@ Rocket.prototype.init = function(){
 }
 
 Rocket.prototype.move = function(event){
-
+	if(event.width < 40) {
+		alert('BOOM!');
+	}
 	this.bmpAnimation.scaleX = .2 * (event.width /this.baseScaleDivide);
 	this.bmpAnimation.scaleY = .2 * (event.width /this.baseScaleDivide);
 

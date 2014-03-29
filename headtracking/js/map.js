@@ -57,7 +57,7 @@ var mapObj = {
 			this.prev_long = long;
 			this.prev_degrees = ang_degrees;
 		}else{
-			console.log("passed point");
+			//console.log("passed point");
 			//continue missle along the path
 		}
 	}
