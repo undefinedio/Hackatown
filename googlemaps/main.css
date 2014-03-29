@@ -1,0 +1,35 @@
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow:hidden;
+}
+
+.block{
+	width:600px;
+	margin : auto;
+	overflow: hidden;
+	background-color: pink;
+	position: relative;
+	z-index: 2;
+	height: 100%;
+
+}
+#map-canvas {
+	height: 100%;
+	width: 100%;
+}
+.map-container{
+	position: absolute;
+	z-index: 1;
+	width:3000px;
+	height:3000px;
+	left:50%;
+	top:50%;
+	margin-top: -1500px;
+	margin-left: -1500px;
+	-webkit-transform: rotate(90deg);
+}
