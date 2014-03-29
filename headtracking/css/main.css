@@ -1,6 +1,23 @@
+*{
+	margin: 0;
+	padding: 0;
+}
 #inputVideo
 {
 	transform: rotateY(180deg);
-	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
-	-moz-transform:rotateY(180deg); /* Firefox */
+	-webkit-transform:rotateY(180deg);
+	-moz-transform:rotateY(180deg);
+	position: absolute;
+	right:-25%;
+	bottom:5%;
+}
+.wrapper{
+	background-size: cover;
+	position: relative;
+	width:600px;
+	margin: auto;
+}
+#game{
+	display: block;
+	margin: auto;
 }
