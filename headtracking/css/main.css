@@ -8,7 +8,8 @@
 	-webkit-transform:rotateY(180deg);
 	-moz-transform:rotateY(180deg);
 	position: absolute;
-	right:-25%;
+	left:50%;
+	margin-left: 150px;
 	bottom:5%;
 }
 .wrapper{
@@ -16,8 +17,31 @@
 	position: relative;
 	width:600px;
 	margin: auto;
+	overflow: hidden;
+
 }
 #game{
 	display: block;
+	margin: auto;
+}
+
+#map-canvas {
+	height: 100%;
+	width: 100%;
+}
+.map-container{
+	position: absolute;
+	z-index: 1;
+	width:3000px;
+	height:3000px;
+	left:50%;
+	top:50%;
+	margin-top: -1500px;
+	margin-left: -1500px;
+	-webkit-transform: rotate(90deg);
+	z-index: -1;
+}
+.map-wrapper{
+	width:600px;
 	margin: auto;
 }
