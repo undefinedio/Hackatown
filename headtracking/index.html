@@ -68,7 +68,8 @@
 		game.start();
 		fetch();
 		function fetch(){
-			var destination = prompt("WHAT BOMB NOW?");
+			//var destination = prompt("WHAT BOMB NOW?");
+			var destination = "japan";
 			$.ajax({
 			  dataType: "json",
 			  url: "http://nominatim.openstreetmap.org/search?q="+destination+"&format=json&polygon=1&addressdetails=1",
