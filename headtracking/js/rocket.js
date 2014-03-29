@@ -2,30 +2,52 @@ function Rocket(){
 	this.x =0;
 	this.y =0;
 
-	this.baseScaleDivide = 70;
+	this.image = new Image();
+	this.image.src = "images/rocket_sprite.png";
+
+	this.baseScaleDivide = 40;
 
 	this.init();
 }
 
 Rocket.prototype.init = function(){
 
-	this.image = new createjs.Bitmap('images/raket.png');
+	spriteSheet = new createjs.SpriteSheet({
+		// image to use
+		images: [this.image],
+		// width, height & registration point of each sprite
+		frames: {width: 59, height: 500},
+		animations: {
+			walk: [0, 5, "rotate"]
+		}
+	});
 
-	this.image.scaleX = .2;
-	this.image.scaleY = .2;
+	this.bmpAnimation = new createjs.BitmapAnimation(spriteSheet);
 
-	game.stage.addChild(this.image);
+	this.bmpAnimation.gotoAndPlay("rotate");     //animate
+
+	this.bmpAnimation.name = "monster1";
+	this.bmpAnimation.direction = 90;
+	this.bmpAnimation.vX = 4;
+	this.bmpAnimation.scaleX = .7;
+	this.bmpAnimation.scaleY = .7;
+	this.bmpAnimation.x = 16;
+	this.bmpAnimation.y = 32;
+
+	this.bmpAnimation.currentFrame = 0;
+
+	game.stage.addChild(this.bmpAnimation);
 
 }
 
 Rocket.prototype.move = function(event){
+
+	this.bmpAnimation.scaleX = .2 * (event.width /this.baseScaleDivide);
+	this.bmpAnimation.scaleY = .2 * (event.width /this.baseScaleDivide);
+
 	// revert the headtracking input on the X axis
-	//console.log(event.width);
-
-	this.image.scaleX = .2 * (event.width /this.baseScaleDivide);
-	this.image.scaleY = .2 * (event.width /this.baseScaleDivide);
-
 	var x = (event.x- game.width) * -1;
-	this.image.x = x;
-	this.image.y = event.y;
+
+	this.bmpAnimation.x = x;
+	this.bmpAnimation.y = event.y -50;
 }
