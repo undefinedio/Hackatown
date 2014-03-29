@@ -10,7 +10,6 @@ Game.prototype.init = function() {
 	//this.leader = document.getElementById('leader');
 	this.gc = document.getElementById('game');
 
-	console.log(this.gc);
 	this.context = this.gc.getContext('2d');
 
 	this.setSize();
@@ -22,7 +21,7 @@ Game.prototype.init = function() {
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", this.gameLoop);
 
-
+	fighter = new Fighter();
 };
 
 Game.prototype.setSize = function() {

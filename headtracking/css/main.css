@@ -3,6 +3,11 @@
 	padding: 0;
 }
 
+body{
+	/*background: url(../fullmarch_2.gif) no-repeat;*/
+	/*background-size: cover;*/
+}
+
 #inputVideo, #leader{
 	transform: rotateY(180deg);
 	-webkit-transform:rotateY(180deg);
@@ -68,4 +73,9 @@
 	transform: rotateY(180deg);
 	-webkit-transform:rotateY(180deg);
 	-moz-transform:rotateY(180deg);
+}
+
+#video{
+	width: 500px;
+	height: 500px;
 }
