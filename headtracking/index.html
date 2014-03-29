@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Headtracking</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="libs/headtrackr.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+</head>
+<body>
+	<canvas id="inputCanvas" width="320" height="240" style="display:none"></canvas>
+	<canvas id="game" width="320" height="240"></canvas>
+	<video id="inputVideo" autoplay loop></video>
+
+	<script type="text/javascript">
+		var videoInput = document.getElementById('inputVideo');
+		var canvasInput = document.getElementById('inputCanvas');
+
+		var htracker = new headtrackr.Tracker();
+		htracker.init(videoInput, canvasInput);
+		htracker.start();
+
+		stage = new createjs.Stage("game");
+
+		createjs.Ticker.setFPS(30);
+		createjs.Ticker.addEventListener("tick", gameLoop);
+
+		rocket = new createjs.Bitmap('images/rocket.png');
+
+		rocket.scaleX = .15;
+		rocket.scaleY = .15;
+
+		stage.addChild(rocket);
+//		//Set position of Shape instance.
+//		circle.x = circle.y = 50;
+//		//Add Shape instance to stage display list.
+//		stage.addChild(circle);
+
+		function gameLoop() {
+			stage.update();
+		}
+
+
+		document.addEventListener("facetrackingEvent", function( event ) {
+			rocket.x = event.x-50;
+			rocket.y = event.y;
+		});
+	</script>
+</body>
+</html>
