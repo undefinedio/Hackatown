@@ -1,6 +1,6 @@
 var mapObj = {
 	init: function () {
-		console.log(this);
+		//console.log(this);
 		this.start = {
 			lat : 39.016716,
 			long : 125.800323
@@ -34,7 +34,7 @@ var mapObj = {
 			percentage = Math.max( 0, Math.min(1, percentage) );
 
 			var lat = this.start.lat + percentage * ( this.destionation.lat - this.start.lat );
-			console.log(this.start.long, this.destionation.long);
+			//console.log(this.start.long, this.destionation.long);
 			var long = this.start.long + percentage * ( this.destionation.long - this.start.long);
 
 			var ang = Math.atan( (lat - this.prev_lat) / (long - this.prev_long) );
@@ -49,7 +49,7 @@ var mapObj = {
 			this.prev_long = long;
 			this.prev_degrees = ang_degrees;
 		}else{
-			console.log("passed point");
+			//console.log("passed point");
 			//continue missle along the path
 		}
 	}

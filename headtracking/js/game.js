@@ -2,6 +2,8 @@ function Game(){
 	this.width = 600;
 	this.stage= "";
 	this.init();
+	this.cloudsCount = 0;
+	this.clouds = [];
 }
 
 Game.prototype.init = function() {
@@ -23,7 +25,7 @@ Game.prototype.init = function() {
 };
 
 Game.prototype.start = function() {
-	createjs.Ticker.addEventListener("tick", this.gameLoop);
+	createjs.Ticker.addEventListener("tick", this.gameLoop.bind(this));
 }
 
 Game.prototype.setSize = function() {
@@ -36,6 +38,18 @@ Game.prototype.setSize = function() {
 };
 
 Game.prototype.gameLoop = function() {
+	//console.log(this.cloudsCount);
+	if(this.cloudsCount < 5)
+	{
+		this.clouds[this.cloudsCount] = new Clouds();
+		this.cloudsCount ++;
+	}
+
+	for (var i=0;i<this.clouds.length;i++)
+	{
+		this.clouds[i].move();
+	}
+
 	game.stage.update();
 }
 var game = new Game();

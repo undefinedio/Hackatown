@@ -18,7 +18,7 @@ Rocket.prototype.init = function(){
 		// width, height & registration point of each sprite
 		frames: {width: 59, height: 500},
 		animations: {
-			walk: [0, 5, "rotate"]
+			walk: [0, 9, "rotate"]
 		}
 	});
 

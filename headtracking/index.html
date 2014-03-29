@@ -21,7 +21,7 @@
 </head>
 <body>
 <video width="100%" autoplay loop style="z-index: -10; position: absolute;" >
-	<source src="fullmarch.mp4" type="video/mp4" />
+	<source src="video/fullmarch.mp4" type="video/mp4" />
 </video>
 
 <!--<video  autoplay="autoplay" loop id="vleft">-->
@@ -54,13 +54,19 @@
 <script src="js/game.js"></script>
 <script src="js/rocket.js"></script>
 <script src="js/headtracker.js"></script>
-<!--<script src="js/leader.js"></script>-->
+<script src="js/clouds.js"></script>
 
 
 <script type="text/javascript" src="js/map.js"></script>
 
 
 <script type="text/javascript">
+
+	function getRandom(min, max) {
+		return Math.random() * (max - min) + min;
+	}
+
+
 	var game = new Game();
 	var tracker = new Tracker();
 	var rocket = new Rocket();
@@ -68,18 +74,19 @@
 		game.start();
 		fetch();
 		function fetch(){
-			var destination = prompt("WHAT BOMB NOW?");
+			//var destination = prompt("WHAT BOMB NOW?");
+			var destination = "bilzen";
 			$.ajax({
 			  dataType: "json",
 			  url: "http://nominatim.openstreetmap.org/search?q="+destination+"&format=json&polygon=1&addressdetails=1",
 			  type: "GET",
 			  success: function(data){
-			  	console.log(data);
+			  	//console.log(data);
 			  	if(data.length){
-			  		console.log(mapObj);
+			  		//console.log(mapObj);
 			  		mapObj.destionation.lat = parseInt(data[0].lat,10);
 			  		mapObj.destionation.long = parseInt(data[0].lon,10);
-			  		console.log(mapObj);
+			  		//console.log(mapObj);
 			  		mapObj.startLoop();
 			  	}else{
 			  		fetch();
