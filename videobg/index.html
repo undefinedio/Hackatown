@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script src="video.js"></script>
+	<style>
+
+	</style>
+	<meta charset="utf-8">
+
+
+</head>
+<body >
+<div id="container">
+	<video width="100%" autoplay loop >
+		<source src="../headtracking/fullmarch.mp4" type="video/mp4" />
+	</video>
+</div>
+</body>
+<script>
+	$('body').videoBG({
+		position:"fixed",
+		zIndex:-1,
+		mp4:'fullmarch.mp4',
+		opacity:1
+	});
+</script>
+</html>

@@ -10,7 +10,6 @@ Game.prototype.init = function() {
 	//this.leader = document.getElementById('leader');
 	this.gc = document.getElementById('game');
 
-	console.log(this.gc);
 	this.context = this.gc.getContext('2d');
 
 	this.setSize();
@@ -20,10 +19,12 @@ Game.prototype.init = function() {
 	this.stageCam = new createjs.Stage("leader");
 	//set the game loop
 	createjs.Ticker.setFPS(30);
-	createjs.Ticker.addEventListener("tick", this.gameLoop);
-
-
+	//createjs.Ticker.addEventListener("tick", this.gameLoop);
 };
+
+Game.prototype.start = function() {
+	createjs.Ticker.addEventListener("tick", this.gameLoop);
+}
 
 Game.prototype.setSize = function() {
 	//set canvas size
@@ -34,11 +35,7 @@ Game.prototype.setSize = function() {
 	this.canvasInput.width = this.width;
 };
 
-
 Game.prototype.gameLoop = function() {
 	game.stage.update();
-	//game.stageCam.update();
 }
-
-
 var game = new Game();

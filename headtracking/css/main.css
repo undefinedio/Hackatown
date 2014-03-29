@@ -2,10 +2,12 @@
 	margin: 0;
 	padding: 0;
 }
+
 body{
 	overflow: hidden;
 }
-#inputVideo{
+
+#inputVideo, #leader{
 	transform: rotateY(180deg);
 	-webkit-transform:rotateY(180deg);
 	-moz-transform:rotateY(180deg);
@@ -69,4 +71,9 @@ body{
 	transform: rotateY(180deg);
 	-webkit-transform:rotateY(180deg);
 	-moz-transform:rotateY(180deg);
+}
+
+#video{
+	width: 500px;
+	height: 500px;
 }

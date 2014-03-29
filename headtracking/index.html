@@ -4,8 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Headtracking</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+
+
+
 	<script src="libs/headtrackr.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<script src="libs/video.js"></script>
+
+
 	<script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
 
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBlDrJ8JGU0l4Jhlifpk2HdfurwuISEdw&sensor=false"></script>
@@ -13,14 +20,22 @@
 
 </head>
 <body>
-
-<video  autoplay="autoplay" loop id="vleft">
-	<source src="march.mp4" type="video/mp4">
+<video width="100%" autoplay loop style="z-index: -10; position: absolute;" >
+	<source src="fullmarch.mp4" type="video/mp4" />
 </video>
 
-<video  autoplay="autoplay" loop id="vright">
-	<source src="march.mp4" type="video/mp4">
-</video>
+<!--<video  autoplay="autoplay" loop id="vleft">-->
+	<!--<source src="march.mp4" type="video/mp4">-->
+<!--</video>-->
+
+<!--<video  autoplay="autoplay" loop id="vright">-->
+	<!--<source src="march.mp4" type="video/mp4">-->
+<!--</video>-->
+
+
+<script>
+
+</script>
 
 <div class="wrapper" id="wrapper">
 
@@ -34,19 +49,47 @@
 <canvas id="leader"></canvas>
 <video id="inputVideo" autoplay loop></video>
 
+<script src="js/fighterplane.js"></script>
+
 <script src="js/game.js"></script>
 <script src="js/rocket.js"></script>
 <script src="js/headtracker.js"></script>
 <!--<script src="js/leader.js"></script>-->
-<!--<script src="js/fighterplane.js"></script>-->
+
 
 <script type="text/javascript" src="js/map.js"></script>
 
 
-	<script type="text/javascript">
-		var tracker = new Tracker();
-		var rocket = new Rocket();
-		//var leader = new Leader();
-	</script>
+<script type="text/javascript">
+	var game = new Game();
+	var tracker = new Tracker();
+	var rocket = new Rocket();
+	function initStuff() {
+		game.start();
+		fetch();
+		function fetch(){
+			var destination = prompt("WHAT BOMB NOW?");
+			$.ajax({
+			  dataType: "json",
+			  url: "http://nominatim.openstreetmap.org/search?q="+destination+"&format=json&polygon=1&addressdetails=1",
+			  type: "GET",
+			  success: function(data){
+			  	console.log(data);
+			  	if(data.length){
+			  		console.log(mapObj);
+			  		mapObj.destionation.lat = parseInt(data[0].lat,10);
+			  		mapObj.destionation.long = parseInt(data[0].lon,10);
+			  		console.log(mapObj);
+			  		mapObj.startLoop();
+			  	}else{
+			  		fetch();
+			  	}
+			  }
+		});
+		}
+	}
+	
+	
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@ function Fighter(){
 	this.y =0;
 }
 
-Rocket.prototype.init = function(){
+Fighter.prototype.init = function(){
 	this.image = new createjs.Bitmap('images/plane.png');
 	this.image.scaleX = .2;
 	this.image.scaleY = .2;

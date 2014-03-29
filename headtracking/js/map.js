@@ -1,54 +1,57 @@
-function initialize() {
-	var destionation = {
-		lat : 51.198924,
-		long : 4.421997
-	};
-	var start = {
-		lat : 39.016716,
-		long : 125.800323
-	};
-
-	var totalSteps = 500;
-	var currentStep = 0;
-
-	var mapOptions = {
-		center: new google.maps.LatLng( start.lat , start.long ),
-		zoom: 7,
-		mapTypeId: google.maps.MapTypeId.HYBRID
-	};
-	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-	
-
-	var prev_lat = 0;
-	var prev_long = 0;
-	var prev_degrees = 0;
-	var tracking = true;
-
-	setInterval( function()
-	{	
-		if(tracking){
-			var percentage = currentStep / totalSteps;
+var mapObj = {
+	init: function () {
+		console.log(this);
+		this.start = {
+			lat : 39.016716,
+			long : 125.800323
+		};
+		this.destionation = {
+			lat : 51.198924,
+			long : 4.421997
+		};
+		this.mapOptions = {
+			center: new google.maps.LatLng( this.start.lat , this.start.long ),
+			zoom: 7,
+			mapTypeId: google.maps.MapTypeId.HYBRID
+		};
+		
+		this.map = new google.maps.Map(document.getElementById("map-canvas"), this.mapOptions);
+		
+		this.totalSteps = 500;
+		this.currentStep = 0;
+		this.prev_lat = 0;
+		this.prev_long = 0;
+		this.prev_degrees = 0;
+		this.tracking = true;
+		initStuff();
+	},
+	startLoop : function () {
+		setInterval(this.loop.bind(this),100);
+	},
+	loop : function () {
+		if(this.tracking){
+			var percentage = this.currentStep / this.totalSteps;
 			percentage = Math.max( 0, Math.min(1, percentage) );
 
-			var lat = start.lat + percentage * ( destionation.lat - start.lat );
-			var long = start.long + percentage * (destionation.long - start.long);
+			var lat = this.start.lat + percentage * ( this.destionation.lat - this.start.lat );
+			console.log(this.start.long, this.destionation.long);
+			var long = this.start.long + percentage * ( this.destionation.long - this.start.long);
 
-			var ang = Math.atan( (lat - prev_lat) / (long - prev_long) );
+			var ang = Math.atan( (lat - this.prev_lat) / (long - this.prev_long) );
 			var ang_degrees = ang * 180 / Math.PI;
 
-			if(isNaN(ang_degrees)) ang_degrees = prev_degrees;
+			if(isNaN(ang_degrees)) ang_degrees = this.prev_degrees;
 			$(".map-container").css({"-webkit-transform" : "rotate("+ (ang_degrees+90) +"deg)"});
-			
-			map.panTo( new google.maps.LatLng( lat , long) );
-
-			currentStep++;
-			prev_lat = lat;
-			prev_long = long;
-			prev_degrees = ang_degrees;
+			//console.log(lat, long);
+			this.map.panTo( new google.maps.LatLng( lat , long) );
+			this.currentStep++;
+			this.prev_lat = lat;
+			this.prev_long = long;
+			this.prev_degrees = ang_degrees;
 		}else{
+			console.log("passed point");
 			//continue missle along the path
 		}
-		console.log( currentStep, percentage, lat, long, ang, ang_degrees );
-	}, 100);
+	}
 }
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', mapObj.init.bind(mapObj));
