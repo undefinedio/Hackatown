@@ -7,6 +7,7 @@ function Game(){
 Game.prototype.init = function() {
 	this.videoInput = document.getElementById('inputVideo');
 	this.canvasInput = document.getElementById('inputCanvas');
+	//this.leader = document.getElementById('leader');
 	this.gc = document.getElementById('game');
 
 	console.log(this.gc);
@@ -16,6 +17,7 @@ Game.prototype.init = function() {
 
 	//create createjs canvas to work with
 	this.stage = new createjs.Stage("game");
+	this.stageCam = new createjs.Stage("leader");
 	//set the game loop
 	createjs.Ticker.setFPS(30);
 	createjs.Ticker.addEventListener("tick", this.gameLoop);
@@ -35,6 +37,7 @@ Game.prototype.setSize = function() {
 
 Game.prototype.gameLoop = function() {
 	game.stage.update();
+	//game.stageCam.update();
 }
 
 
