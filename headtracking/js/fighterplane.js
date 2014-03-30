@@ -22,8 +22,9 @@ Fighter.prototype.init = function(){
 Fighter.prototype.move = function(){
 
 	var intersection = ndgmr.checkRectCollision(rocket.bmpAnimation,this.plane);
-	if(intersection){
-		console.log('HIT');
+	if(intersection && !this.stop){
+		this.stop = true;
+		hitSpawn();
 	}
 
 	if(this.plane.y > game.stage.canvas.height){

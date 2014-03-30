@@ -97,13 +97,14 @@
 <canvas id="leader"></canvas>
 <video id="inputVideo" autoplay loop></video>
 
+<section class="spawn"></section>
+
 <script src="js/fighterplane.js"></script>
 
 <script src="js/game.js"></script>
 <script src="js/rocket.js"></script>
 <script src="js/headtracker.js"></script>
 <script src="js/clouds.js"></script>
-<script src="js/fighterplane.js"></script>
 
 
 <script type="text/javascript" src="js/map.js"></script>
@@ -136,6 +137,7 @@
 
 
 	function initStuff() {
+		
 		game.start();
 		fetch();
 		function tryAgain () {
@@ -168,6 +170,23 @@
 	}
 
 
+	function hitSpawn(){
+		$(".spawn").show();
+		var i = 1;
+		var interval = setInterval(function(){
+			i++;
+			if(i > 400){
+				clearInterval(interval);
+				startCry();
+			} 
+			var $fire = $('<img>');
+			$fire.addClass("fire");
+			$fire.attr("src", "images/fire"+Math.floor((Math.random()*12)+1)+".gif");
+			$fire.css("left", Math.floor((Math.random()*$("body").width()-100)+1));
+			$fire.css("top", Math.floor((Math.random()*$("body").width()-100)+1));
+			$(".spawn").append($fire);
+		},10);
+	}
 	
 	
 </script>

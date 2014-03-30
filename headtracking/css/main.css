@@ -5,7 +5,7 @@
 
 body{
 	overflow: hidden;
-
+	height:100%;
 }
 p, h1{
 	color: white;
@@ -177,4 +177,17 @@ p, h1{
 	text-align: center;
 	left: -116px;
 	z-index: -10;
+}
+
+.spawn{
+	display: none;
+	z-index: 100;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+.fire{
+	position: absolute;
 }
