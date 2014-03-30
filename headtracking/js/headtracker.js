@@ -8,8 +8,8 @@ function Tracker(){
 }
 
 Tracker.prototype.Update = function(){
+
 	document.addEventListener("facetrackingEvent", function( event ) {
 		rocket.move(event);
-		//leader.move(event);
 	});
 }

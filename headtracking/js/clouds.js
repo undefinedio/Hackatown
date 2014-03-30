@@ -28,6 +28,4 @@ Clouds.prototype.move = function(){
 	}else{
 		this.cloud.y = this.cloud.y + this.speed;
 	}
-
-
 }

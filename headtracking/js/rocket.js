@@ -50,5 +50,5 @@ Rocket.prototype.move = function(event){
 	var x = (event.x- game.width) * -1;
 
 	this.bmpAnimation.x = x;
-	this.bmpAnimation.y = event.y -250;
+	this.bmpAnimation.y = event.y -150;
 }

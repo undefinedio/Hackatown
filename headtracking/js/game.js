@@ -3,7 +3,9 @@ function Game(){
 	this.stage= "";
 	this.init();
 	this.cloudsCount = 0;
+	this.planesCount = 0;
 	this.clouds = [];
+	this.planes = [];
 }
 
 Game.prototype.init = function() {
@@ -39,10 +41,21 @@ Game.prototype.setSize = function() {
 
 Game.prototype.gameLoop = function() {
 	//console.log(this.cloudsCount);
-	if(this.cloudsCount < 5)
+	if(this.cloudsCount < 3)
 	{
 		this.clouds[this.cloudsCount] = new Clouds();
 		this.cloudsCount ++;
+	}
+
+	if(this.planesCount < 1)
+	{
+		this.planes[this.planesCount] = new Fighter();
+		this.planesCount ++;
+	}
+
+	for (var i=0;i<this.planes.length;i++)
+	{
+		this.planes[i].move();
 	}
 
 	for (var i=0;i<this.clouds.length;i++)
