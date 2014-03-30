@@ -13,7 +13,6 @@ Tracker.prototype.Update = function(){
 	document.addEventListener('headtrackrStatus', 
 	  function (event) {
 	    if(event.status == "found"){
-	    	perm = true;
 	    	permTrue();
 	    } 
 	    

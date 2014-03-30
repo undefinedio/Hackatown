@@ -71,19 +71,20 @@
 
 		<div class="clear"></div>
 
-		<h1>Kim commands you to accept camera permissions!</h1>
+		<h1 id="js-perm">Kim commands you to accept camera permissions!</h1>
 
 		<div class="clear"></div>
 
-			<div class="input-holder clear hidden">
-				<input id="form-name" value="WHERE YU BOMB?" />
-			</div>
+		<div class="input-holder clear hidden">
+			<input id="form-name" value="WHERE YU BOMB?" />
+		</div>
 	</section>
 
 
 </section>
 <section id="js-page-game" class="page hidden">
 	<div class="wrapper" id="wrapper">
+		<img src="images/orn.png" class="ornement">
 	<canvas id="inputCanvas" width="320" height="240" style="display:none"></canvas>
 	<canvas id="game"></canvas>
 		<div class="map-container">
@@ -121,29 +122,20 @@
 	var destination;
 
 	function permTrue () {
-		perm = true;
-		initStuff();
+		$("#js-perm").hide();
+		$(".input-holder").show();
 	}
 
 	$("input").on("keyup" , function(e){
-		console.log(arguments);
 		if (e.keyCode == 13) {
 			destination = e.currentTarget.value;
 	        initStuff();
 	    }
 	});
 
-	function permError () {
-		alert("PERMISSIONS NOW!!");
-	}
+
 
 	function initStuff() {
-		if(!perm){
-			destination = undefined;
-			permError();
-			return false;
-		} 
-		if(!destination) return false;
 		game.start();
 		fetch();
 		function tryAgain () {
