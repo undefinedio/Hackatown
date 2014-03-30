@@ -26,6 +26,13 @@ p, h1{
 
 #inputVideo{
 	z-index: 1;
+	background: url(../images/box.png);
+	background-size: cover;
+}
+#leader{
+	background: url(../images/box.png);
+	background-size: 100% 100%;
+	z-index: 10;
 }
 
 .wrapper{
