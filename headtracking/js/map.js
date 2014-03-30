@@ -36,6 +36,7 @@ var mapObj = {
 		var canvasx = 300;
 	},
 	loop : function () {
+		if(this.stop) return false;
 		if(this.tracking){
 			var percentage = this.currentStep / this.totalSteps;
 			percentage = Math.max( 0, Math.min(1, percentage) );

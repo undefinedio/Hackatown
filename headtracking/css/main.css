@@ -2,7 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
-
+#leader{
+	display:none;
+}
 body{
 	overflow: hidden;
 	height:100%;

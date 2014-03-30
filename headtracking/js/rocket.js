@@ -5,7 +5,7 @@ function Rocket(){
 	this.image = new Image();
 	this.image.src = "images/rocket_sprite.png";
 
-	this.baseScaleDivide = 40;
+	this.baseScaleDivide = 70;
 
 	this.init();
 }
@@ -40,7 +40,8 @@ Rocket.prototype.init = function(){
 }
 
 Rocket.prototype.move = function(event){
-	if(event.width < 40) {
+	if(event.width < 40 && !this.death) {
+		this.death = true;
 		checkWin();
 	}
 	this.bmpAnimation.scaleX = .2 * (event.width /this.baseScaleDivide);
@@ -50,5 +51,5 @@ Rocket.prototype.move = function(event){
 	var x = (event.x- game.width) * -1;
 
 	this.bmpAnimation.x = x;
-	this.bmpAnimation.y = event.y -150;
+	this.bmpAnimation.y = event.y -120;
 }

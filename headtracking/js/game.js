@@ -8,12 +8,11 @@ function Game(){
 	this.planes = [];
 	this.goPlanes = false;
 
-	setInterval(function(){
-		game.goPlanes = true;
-	},20000);
+	
 }
 
 Game.prototype.init = function() {
+	
 	this.videoInput = document.getElementById('inputVideo');
 	this.canvasInput = document.getElementById('inputCanvas');
 	//this.leader = document.getElementById('leader');
@@ -32,6 +31,10 @@ Game.prototype.init = function() {
 };
 
 Game.prototype.start = function() {
+	console.trace();
+	setInterval(function(){
+		game.goPlanes = true;
+	},18000);
 	createjs.Ticker.addEventListener("tick", this.gameLoop.bind(this));
 }
 
@@ -45,6 +48,7 @@ Game.prototype.setSize = function() {
 };
 
 Game.prototype.gameLoop = function() {
+	if(this.stop) return false;
 	//console.log(this.cloudsCount);
 	if(this.cloudsCount < 3)
 	{

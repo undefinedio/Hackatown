@@ -1,7 +1,7 @@
 function Fighter(){
 	this.x = 0;
 	this.y =0;
-	this.speed =  getRandom(35,50 );
+	this.speed =  getRandom(20,30 );
 	this.init();
 }
 

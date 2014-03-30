@@ -88,7 +88,6 @@
 		<img src="images/orn.png" class="ornement">
 	</div>
 	<div class="wrapper" id="wrapper">
-
 	<canvas id="inputCanvas" width="320" height="240" style="display:none"></canvas>
 	<canvas id="game"></canvas>
 		<div class="map-container">
@@ -97,20 +96,14 @@
 	</div>
 </section>
 
-
 <div id="leader"></div>
 <video id="inputVideo" autoplay loop></video>
-
 <section class="spawn"></section>
-
 <script src="js/fighterplane.js"></script>
-
 <script src="js/game.js"></script>
 <script src="js/rocket.js"></script>
 <script src="js/headtracker.js"></script>
 <script src="js/clouds.js"></script>
-
-
 <script type="text/javascript" src="js/map.js"></script>
 
 
@@ -141,13 +134,7 @@
 
 
 	function initStuff() {
-		
-		game.start();
 		fetch();
-		function tryAgain () {
-			console.log("test");
-			//show error
-		}
 		function fetch(){
 			$.ajax({
 			  dataType: "json",
@@ -156,6 +143,8 @@
 			  success: function(data){
 			  	//console.log(data);
 			  	if(data.length){
+			  		game.start();
+			  		$("#leader").show();
 			  		$(".page").hide();
 			  		$("#js-page-game").show();
 			  		$("#inputVideo").show();
@@ -165,8 +154,6 @@
 			  		//console.log(mapObj);
 			  		mapObj.init();
 			  		mapObj.startLoop();
-			  	}else{
-			  		tryAgain();
 			  	}
 			  }
 		});
@@ -179,7 +166,7 @@
 		var i = 1;
 		var interval = setInterval(function(){
 			i++;
-			if(i > 200){
+			if(i > 150){
 				clearInterval(interval);
 				startCry();
 			} 
@@ -193,15 +180,21 @@
 	}
 
 	function startCry() {
+		console.trace();
+		game.stop = true;
+		mapObj.stop = true;
 		$(".page").remove();
 		$(".spawn").remove();
 		$("#inputVideo").remove();
+		$("#leader").remove();
 		$("#js-fullscreen-video").attr("src", "video/cry.mp4");
-		$("#js-loop-audio").remove();x
+		$("#js-loop-audio").remove();
 		//$("#js-loop-audio").currentTime = 0;
 	}
 
 	function checkWin() {
+		game.stop = true;
+		mapObj.stop = true;
 		if(mapObj.currentStep > 370){
 			this.startWin();
 		}else{
@@ -210,10 +203,13 @@
 	}
 
 	function startWin(){
+		game.stop = true;
+		mapObj.stop = true;
 		$(".page").remove();
 		$(".spawn").remove();
 		$("#inputVideo").remove();
-		$("#js-fullscreen-video").attr("src", "video/win.mp4");
+		$("#leader").remove();
+		$("#js-fullscreen-video").attr("src", "video/WIN.mp4");
 		$("#js-loop-audio").attr("src", "audio/n2.mp3");
 	}
 	
