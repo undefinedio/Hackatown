@@ -23,12 +23,12 @@
 <body>
 
 
-<audio autoplay loop>
+<audio id="js-loop-audio" autoplay loop>
 	<source src="audio/n1.mp3" type="audio/mpeg" >
 </audio>
 
 <video width="100%" autoplay loop style="z-index: -10; position: absolute;" >
-	<source src="video/fullmarch.mp4" type="video/mp4" />
+	<source id="js-fullscreen-video" src="video/fullmarch.mp4" type="video/mp4" />
 </video>
 <section id="js-page-intro" class="page">
 
@@ -179,7 +179,7 @@
 		var i = 1;
 		var interval = setInterval(function(){
 			i++;
-			if(i > 400){
+			if(i > 200){
 				clearInterval(interval);
 				startCry();
 			} 
@@ -190,6 +190,22 @@
 			$fire.css("top", Math.floor((Math.random()*$("body").width()-100)+1));
 			$(".spawn").append($fire);
 		},10);
+	}
+
+	function startCry() {
+		$(".page").remove();
+		$(".spawn").remove();
+		$("#inputVideo").remove();
+		$("#js-fullscreen-video").attr("src", "video/lose.mp4");
+		$("#js-loop-audio").attr("src", "");
+	}
+
+	function startWin(){
+		$(".page").remove();
+		$(".spawn").remove();
+		$("#inputVideo").remove();
+		$("#js-fullscreen-video").attr("src", "video/win.mp4");
+		$("#js-loop-audio").attr("src", "audio/n2.mp3");
 	}
 	
 	
