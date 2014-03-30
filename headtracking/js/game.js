@@ -8,7 +8,9 @@ function Game(){
 	this.planes = [];
 	this.goPlanes = false;
 
-	setInterval(function(){game.goPlanes = true},10000);
+	setInterval(function(){
+		game.goPlanes = true;
+	},20000);
 }
 
 Game.prototype.init = function() {

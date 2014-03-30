@@ -11,7 +11,7 @@ var mapObj = {
 			mapTypeId: google.maps.MapTypeId.HYBRID
 		};
 		this.map = new google.maps.Map(document.getElementById("map-canvas"), this.mapOptions);
-		this.totalSteps = 500;
+		this.totalSteps = 400;
 		this.currentStep = 0;
 		this.prev_lat = 0;
 		this.prev_long = 0;
