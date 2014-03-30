@@ -23,20 +23,20 @@
 <video width="100%" autoplay loop style="z-index: -10; position: absolute;" >
 	<source src="video/fullmarch.mp4" type="video/mp4" />
 </video>
-
-
-<script>
-
-</script>
-
-<div class="wrapper" id="wrapper">
-
+<section id="js-page-intro" class="page">
+	<h1>Intro</h1>
+	<input type="text" placeholder="BOM WHAT NOW ?">
+</section>
+<section id="js-page-game" class="page hidden">
+	<div class="wrapper" id="wrapper">
 	<canvas id="inputCanvas" width="320" height="240" style="display:none"></canvas>
 	<canvas id="game"></canvas>
 		<div class="map-container">
 			<div id="map-canvas"></div>
 		</div>
-</div>
+	</div>
+</section>
+
 
 <canvas id="leader"></canvas>
 <video id="inputVideo" autoplay loop></video>
@@ -59,16 +59,43 @@
 		return Math.random() * (max - min) + min;
 	}
 
-
+	var perm = false;
 	var game = new Game();
 	var tracker = new Tracker();
 	var rocket = new Rocket();
+	var destination;
+
+	function permTrue () {
+		perm = true;
+		initStuff();
+	}
+
+	$("input").on("keyup" , function(e){
+		console.log(arguments);
+		if (e.keyCode == 13) {
+			destination = e.currentTarget.value;
+	        initStuff();
+	    }
+	});
+
+	function permError () {
+		alert("PERMISSIONS NOW!!");
+	}
+
 	function initStuff() {
+		if(!perm){
+			destination = undefined;
+			permError();
+			return false;
+		} 
+		if(!destination) return false;
 		game.start();
 		fetch();
+		function tryAgain () {
+			console.log("test");
+			//show error
+		}
 		function fetch(){
-			//var destination = prompt("WHAT BOMB NOW?");
-			var destination = "sidney";
 			$.ajax({
 			  dataType: "json",
 			  url: "http://nominatim.openstreetmap.org/search?q="+destination+"&format=json&polygon=1&addressdetails=1",
@@ -76,18 +103,23 @@
 			  success: function(data){
 			  	//console.log(data);
 			  	if(data.length){
+			  		$(".page").hide();
+			  		$("#js-page-game").show();
+			  		$("#inputVideo").show();
 			  		//console.log(mapObj);
 			  		mapObj.destionation.lat = parseInt(data[0].lat,10);
 			  		mapObj.destionation.long = parseInt(data[0].lon,10);
 			  		//console.log(mapObj);
+			  		mapObj.init();
 			  		mapObj.startLoop();
 			  	}else{
-			  		fetch();
+			  		tryAgain();
 			  	}
 			  }
 		});
 		}
 	}
+
 
 	
 	

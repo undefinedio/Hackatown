@@ -17,29 +17,22 @@ var mapObj = {
 		this.prev_long = 0;
 		this.prev_degrees = 0;
 		this.tracking = true;
-		initStuff();
+		//initStuff();
 	},
 	startLoop : function () {
 		var overlay;
-		var size = 0.3;
-		var swBound = new google.maps.LatLng(this.start.lat-size, this.start.long-size);
-		var neBound = new google.maps.LatLng(this.start.lat+size, this.start.long+size);
+		var sizeY = 0.5;
+		var sizeX = 0.4;
+		var swBound = new google.maps.LatLng(this.destionation.lat-sizeX, this.destionation.long-sizeY);
+		var neBound = new google.maps.LatLng(this.destionation.lat+sizeX, this.destionation.long+sizeY);
 		var bounds = new google.maps.LatLngBounds(swBound, neBound);
-		var srcImage = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/talkeetna.png';
-		console.log(USGSOverlay.prototype);
-		setTimeout((function(){
-			// console.log(bounds);
-			// console.log(this.map);
-			// console.log(srcImage);
-			overlay = new USGSOverlay(bounds, srcImage, this.map);
-		}).bind(this),1000);
-		//setInterval(this.loop.bind(this),100);
+		var srcImage = 'images/roos.png';
+		overlay = new USGSOverlay(bounds, srcImage, this.map);
+		setInterval(this.loop.bind(this),100);
 	},
 	boom : function (x , y) {
 		var canvasy = Math.floor($("canvas").height()/2);
 		var canvasx = 300;
-		console.log(x - canvasx);
-		console.log(y - canvasy);
 	},
 	loop : function () {
 		if(this.tracking){
@@ -106,4 +99,4 @@ USGSOverlay.prototype.draw = function() {
 	div.style.width = (ne.x - sw.x) + 'px';
 	div.style.height = (sw.y - ne.y) + 'px';
 };
-google.maps.event.addDomListener(window, 'load', mapObj.init.bind(mapObj));
+//google.maps.event.addDomListener(window, 'load', mapObj.init.bind(mapObj));

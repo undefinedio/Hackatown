@@ -92,3 +92,16 @@ body{
 	90% { -webkit-transform: translate(2px, 2px)  }
 	100% { -webkit-transform: translate(1px, -2px)  }
 }
+.hidden{
+	display:none;
+}
+.page{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom :0;
+}
+#inputVideo{
+	display:none;
+}
