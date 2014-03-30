@@ -20,6 +20,12 @@ Fighter.prototype.init = function(){
 }
 
 Fighter.prototype.move = function(){
+
+	var intersection = ndgmr.checkRectCollision(rocket.bmpAnimation,this.plane);
+	if(intersection){
+		console.log('HIT');
+	}
+
 	if(this.plane.y > game.stage.canvas.height){
 		this.plane.y = getRandom(-300,-900 );
 		this.plane.x = getRandom(-100,game.stage.canvas.width );

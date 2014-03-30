@@ -47,7 +47,7 @@ Game.prototype.gameLoop = function() {
 		this.cloudsCount ++;
 	}
 
-	if(this.planesCount < 1)
+	if(this.planesCount < 2)
 	{
 		this.planes[this.planesCount] = new Fighter();
 		this.planesCount ++;
@@ -55,6 +55,7 @@ Game.prototype.gameLoop = function() {
 
 	for (var i=0;i<this.planes.length;i++)
 	{
+
 		this.planes[i].move();
 	}
 
