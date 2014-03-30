@@ -35,6 +35,12 @@ var mapObj = {
 		}).bind(this),1000);
 		//setInterval(this.loop.bind(this),100);
 	},
+	boom : function (x , y) {
+		var canvasy = Math.floor($("canvas").height()/2);
+		var canvasx = 300;
+		console.log(x - canvasx);
+		console.log(y - canvasy);
+	},
 	loop : function () {
 		if(this.tracking){
 			var percentage = this.currentStep / this.totalSteps;
@@ -44,10 +50,9 @@ var mapObj = {
 			var long = this.start.long + percentage * ( this.destionation.long - this.start.long);
 
 			var ang = Math.atan( (lat - this.prev_lat) / (long - this.prev_long) );
-			var angPlus = 90;
-			if(ang < 0)	angPlus += 180;
 			var ang_degrees = ang * 180 / Math.PI;
-
+			var angPlus = 90;
+			if(this.destionation.long > this.start.long) angPlus += 180;
 			if(isNaN(ang_degrees)) ang_degrees = this.prev_degrees;
 			$(".map-container").css({"-webkit-transform" : "rotate("+ (ang_degrees+angPlus) +"deg)"});
 			//console.log(lat, long);
