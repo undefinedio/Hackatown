@@ -6,6 +6,9 @@ function Game(){
 	this.planesCount = 0;
 	this.clouds = [];
 	this.planes = [];
+	this.goPlanes = false;
+
+	setInterval(function(){game.goPlanes = true},10000);
 }
 
 Game.prototype.init = function() {
@@ -47,7 +50,8 @@ Game.prototype.gameLoop = function() {
 		this.cloudsCount ++;
 	}
 
-	if(this.planesCount < 2)
+
+	if(this.planesCount < 2 && this.goPlanes)
 	{
 		this.planes[this.planesCount] = new Fighter();
 		this.planesCount ++;
