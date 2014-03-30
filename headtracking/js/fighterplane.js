@@ -1,7 +1,7 @@
 function Fighter(){
 	this.x = 0;
 	this.y =0;
-	this.speed =  getRandom(25,35 );
+	this.speed =  getRandom(35,50 );
 	this.init();
 }
 
@@ -29,7 +29,7 @@ Fighter.prototype.move = function(){
 	if(this.plane.y > game.stage.canvas.height){
 		this.plane.y = getRandom(-300,-900 );
 		this.plane.x = getRandom(-100,game.stage.canvas.width );
-		this.speed =  getRandom(10,15 );
+		this.speed =  getRandom(35,50 );
 	}else{
 		this.plane.y = this.plane.y + this.speed;
 	}

@@ -5,6 +5,11 @@
 
 body{
 	overflow: hidden;
+
+}
+p, h1{
+	color: white;
+	font-family: Caviar Dreams Bold, Helvetica, Arial;
 }
 
 #inputVideo, #leader{
@@ -104,4 +109,72 @@ body{
 }
 #inputVideo{
 	display:none;
+}
+
+.container{
+	width: 600px;
+	margin: auto;
+	background: #091558;
+	position: relative;
+}
+.container h1{
+	font-size: 30px;
+	padding: 50px 0;
+	text-align: center;
+}
+.container video{
+	width:600px;
+}
+
+.clear{
+	clear:both;
+}
+
+@font-face
+{
+	font-family: Caviar Dreams;
+	src: url(../fonts/CaviarDreams.ttf);
+}
+
+@font-face
+{
+	font-family: Caviar Dreams Bold;
+	src: url(../fonts/Caviar%20Dreams%20Bold.ttf);
+	font-weight:bold;
+}
+
+.links{
+	margin-top: 3%;
+	width:50%;
+	float:left;
+}
+
+.rechts{
+	margin-top: 3%;
+	float: left;
+	width: 32%;
+	margin-right: 5px;
+	text-align: left;
+	color: white;
+}
+
+.sizeFix{
+	margin-left: 51%;
+	height: 75px;
+}
+.input-holder{
+	text-align: center;
+	margin: 25px 0;
+}
+.input-holder input{
+	width:70%;
+	padding: 13px 15px;
+	margin: 50px auto ;
+}
+
+.ornement{
+	position: absolute;
+	text-align: center;
+	left: -116px;
+	z-index: -10;
 }

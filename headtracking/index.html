@@ -21,15 +21,66 @@
 
 </head>
 <body>
-<audio autoplay>
-	<source src="audio/n1.mp3" type="audio/mpeg">
+
+
+<audio autoplay loop>
+	<source src="audio/n1.mp3" type="audio/mpeg" >
 </audio>
+
 <video width="100%" autoplay loop style="z-index: -10; position: absolute;" >
 	<source src="video/fullmarch.mp4" type="video/mp4" />
 </video>
 <section id="js-page-intro" class="page">
-	<h1>Intro</h1>
-	<input type="text" placeholder="BOM WHAT NOW ?">
+
+	<section class="container">
+		<img src="images/orn.png" class="ornement">
+		<video autoplay loop id="bgvid">
+			<source src="video/final.mp4" type="video/mp4">
+		</video>
+
+
+			<div class="clear">
+				<div class="links">
+					<img src="images/linksrechts_2.gif" class="sizeFix" />
+				</div>
+
+				<div class="rechts">
+					<p>MOVE HEAD LEFT AND RIGHT TO MOVE ROCKET</p>
+				</div>
+			</div>
+
+			<div class="clear">
+				<div class="links">
+					<img src="images/vooruitachteruit_1.gif" class="sizeFix" />
+				</div>
+
+				<div class="rechts">
+					<p>MOVE HEAD FORWARD OR BACKWARD TO LET ROCKET ASCEND OR DESCEND</p>
+				</div>
+			</div>
+
+			<div class="clear">
+				<div class="links">
+					<img src="images/bam_1.gif" class="sizeFix" />
+				</div>
+
+				<div class="rechts">
+					<p>QUICKLY MOVE HEAD BACK TO DROP THE BOMB</p>
+				</div>
+			</div>
+
+		<div class="clear"></div>
+
+		<h1>Kim commands you to accept camera permissions!</h1>
+
+		<div class="clear"></div>
+
+			<div class="input-holder clear hidden">
+				<input id="form-name" value="WHERE YU BOMB?" />
+			</div>
+	</section>
+
+
 </section>
 <section id="js-page-game" class="page hidden">
 	<div class="wrapper" id="wrapper">
