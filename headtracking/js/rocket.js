@@ -41,7 +41,7 @@ Rocket.prototype.init = function(){
 
 Rocket.prototype.move = function(event){
 	if(event.width < 40) {
-		mapObj.boom(event.x, event.y);
+		checkWin();
 	}
 	this.bmpAnimation.scaleX = .2 * (event.width /this.baseScaleDivide);
 	this.bmpAnimation.scaleY = .2 * (event.width /this.baseScaleDivide);

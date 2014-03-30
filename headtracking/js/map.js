@@ -29,6 +29,7 @@ var mapObj = {
 		var srcImage = 'images/roos.png';
 		overlay = new USGSOverlay(bounds, srcImage, this.map);
 		setInterval(this.loop.bind(this),100);
+
 	},
 	boom : function (x , y) {
 		var canvasy = Math.floor($("canvas").height()/2);

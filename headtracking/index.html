@@ -27,8 +27,8 @@
 	<source src="audio/n1.mp3" type="audio/mpeg" >
 </audio>
 
-<video width="100%" autoplay loop style="z-index: -10; position: absolute;" >
-	<source id="js-fullscreen-video" src="video/fullmarch.mp4" type="video/mp4" />
+<video id="js-fullscreen-video" width="100%" autoplay loop style="z-index: -10; position: absolute;" >
+	<source  src="video/fullmarch.mp4" type="video/mp4" />
 </video>
 <section id="js-page-intro" class="page">
 
@@ -196,9 +196,17 @@
 		$(".page").remove();
 		$(".spawn").remove();
 		$("#inputVideo").remove();
-		$("#js-fullscreen-video").attr("src", "video/WIN.mp4");
-		$("#js-loop-audio").remove();
+		$("#js-fullscreen-video").attr("src", "video/cry.mp4");
+		$("#js-loop-audio").remove();x
 		//$("#js-loop-audio").currentTime = 0;
+	}
+
+	function checkWin() {
+		if(mapObj.currentStep > 370){
+			this.startWin();
+		}else{
+			this.hitSpawn();
+		}
 	}
 
 	function startWin(){
