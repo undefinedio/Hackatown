@@ -26,7 +26,6 @@ Rocket.prototype.init = function(){
 
 	this.bmpAnimation.gotoAndPlay("rotate");     //animate
 
-	this.bmpAnimation.name = "monster1";
 	this.bmpAnimation.direction = 90;
 	this.bmpAnimation.vX = 4;
 	this.bmpAnimation.scaleX = .7;
@@ -51,5 +50,5 @@ Rocket.prototype.move = function(event){
 	var x = (event.x- game.width) * -1;
 
 	this.bmpAnimation.x = x;
-	this.bmpAnimation.y = event.y -50;
+	this.bmpAnimation.y = event.y -250;
 }
